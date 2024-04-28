@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据绑定</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <div>
+            单向数据绑定： <input type="text" v-bind:value="name" />
+        </div>
+        <br class="br" />
+        <div>
+            双向数据绑定： <input type="text" v-model:value="name" />
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el: '#root',
+        data: {
+            name: 'Xiang 想'
+        }
+    })
+</script>
+<style type="css">
+    .br {
+        margin-top: 20px;
+    }
+</style>
+
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data与el</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        {{name}}
+    </div>
+</body>
+<script type="text/javascript">
+    /*
+    Vue.config.productionTip = false
+    const v = new Vue({
+        // el: '#root',
+        data: {
+            name: 'Xiang 想'
+        }
+    })
+    console.log(v);
+    v.$mount("#root")
+    */
+
+    new Vue({
+        el: '#root',
+        data: function () {
+            console.log('@@@',this);
+            return {
+                name: 'Xiang 想'
+            }
+        }
+    })
+</script>
+
+</html>

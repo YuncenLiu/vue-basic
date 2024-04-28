@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回顾 Object.defineproperty 方法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        {{person.name}}
+    </div>
+</body>
+<script type="text/javascript">
+    let number = 20
+    let person = {
+        name: 'xiangxiang',
+        age: number,
+        sex: '男'
+    }
+
+    // 数据代理，不可以不枚举，不参与遍历
+    Object.defineProperty(person, 'age', {
+        // value: 19,
+        // enumerable: true, // 控制属性是否可以枚举，默认是 false
+        // writable: true, // 控制数据是否可以被修改,默认为 false
+        // configurable: true // 控制属性是否可以被删除，默认是 false
+
+        // 不可以和 value 同时存在
+        get(){
+            console.log("有人读取 age 属性了");
+            return number
+        },
+        set(value){
+            console.log("有人修改 age 属性了",value);
+            number = value
+        }
+    })
+    console.log(person)
+
+    for (let key in person) {
+        console.log('@@', person[key]);
+    }
+</script>
+
+</html>

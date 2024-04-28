@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<style>
+    #demo1 {
+        height: 40px;
+        background-color: aqua;
+    }
+
+    #demo2 {
+        margin: 10px;
+        background-color: orange;
+    }
+
+    #box1 {
+        padding: 5px;
+        background-color: skyblue;
+    }
+
+    #box2 {
+        padding: 5px;
+        background-color: orange;
+    }
+
+    .list{
+        width: 200px;
+        height: 200px;
+        background-color: skyblue;
+        /* 形成滚动条 */
+        overflow: auto;
+    }
+    li{
+        height: 100px;
+    }
+</style>
+
+<body>
+    <div id="root">
+        {{name}}
+        <hr />
+        控制台打印：<button @click="showInfo">点击事件</button>
+        <hr />
+        控制台打印 传入参数6：<button v-on:click="putParm($event,6)">传入参数</button>
+        <hr />
+        @click.prevent 事件修饰符，点击不跳转：<a href="https://www.liuyuncen.com" @click.prevent="showInfo">点击不跳转</a>
+        <hr />
+        <!-- 阻止冒泡事件-->
+        <div id="demo1" @click="stopPropa">
+            @click.stop 外面的点击也会弹框，里面的点击会形成两次弹框， 避免冒泡
+            <button id="demo2" @click.stop="stopPropa">点击两次弹窗</button>
+        </div>
+        <hr />
+        @click.once 只生效第一次，后续不生效 <button @click.once="stopPropa">只弹框一次</button>
+        <hr />
+        <div id="box1" @click="showMsg($event,1)">
+            div1 @click="showMsg" 什么都不加的情况下，先输出里面的，再输出外面的
+            <div id="box2" @click="showMsg($event,2)">
+                div2
+            </div>
+        </div>
+        <hr />
+        <div id="box1" @click.capture="showMsg($event,1)">
+            div1 @click.capture ="showMsg" 添加 capture 捕获模式，先输出外面的，再输出里面的
+            <div id="box2" @click="showMsg($event,2)">
+                div2
+            </div>
+        </div>
+        <hr />
+        <div id="box1" @click.self="showMsg($event,1)">
+            div1 @click.self ="showMsg" 只对当前元素有效
+            <div id="box2" @click="showMsg($event,2)">
+                div2
+            </div>
+        </div>
+        <hr />
+        事件的默认行为立即执行，无需等待事件回调执行完毕, @scroll 触发滑动、滚轮、键盘上下按键 @wheel 只对滚轮有效
+        <ul @wheel="roll" class="list">
+            <li>1 scroll 滚动到最底下时，就不会增加了</li>
+            <li>2 wheel 即使滚动到最底下，也会增加</li>
+            <li>3 现在通过 wheel 激活对滚轮的控制，如果滚轮则先运算10000此再滚动（默认行为）</li>
+            <li>4 </li>
+        </ul>
+        如果加上了 passive ，先滚动再进行运算，并不是所有都是有影响的， scroll 就不会出现先运算再滚动的情况，移动端用到的 passive 比较多
+        <hr/>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            name: 'Xiang 想'
+        },
+        methods: {
+            showInfo(event) {
+                console.log(event.target);
+                // console.log(this === vm) // 此处this就是vm
+            },
+            putParm(event, v) {
+                console.log(event, v);
+            },
+            stopPropa(event) {
+                alert("同学你好!")
+            },
+            showMsg(event, number) {
+                console.log(number);
+            },
+            roll(){
+                console.log('@');
+            }
+        }
+    })
+</script>
+
+</html>

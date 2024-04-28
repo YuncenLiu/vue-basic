@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据代理</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        {{title}}
+    </div>
+</body>
+<script type="text/javascript">
+    let obj = {x:100}
+    let obj2 = {y:200}
+
+    Object.defineProperty(obj2,'x',{
+        get(){
+            return obj.x
+        },
+        set(value){
+            obj.x = value
+        }
+    })
+
+    let data = {
+        title: 'xiang'
+    }
+
+    const vm = new Vue({
+        el: '#root',
+        data
+    })
+</script>
+</html>
