@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插值语法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        姓：<input type="text" v-model="firstName"> <br/><br/>
+        名：<input type="text" v-model="lastName"> <br/><br/>
+
+        <hr>
+        全名：<span>{{firstName}} - {{lastName}}</span>  <br/><br/>
+        使用插值语法，不符合Vue的风格 
+        <hr>
+        全名：<span>{{fullName()}}</span>  <br/><br/>
+        使用插值语法，不符合Vue的风格 
+
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el: '#root',
+        data: {
+            title: 'Hello Vue',
+            firstName: '张',
+            lastName: '三'
+        },
+        methods: {
+            fullName(){
+                return this.firstName + ' - ' + this.lastName
+            }
+        }
+    })
+</script>
+
+</html>

@@ -14,16 +14,18 @@
         <hr />
         @keyup.enter 按回车打印内容触发事件 Vue.config.keyCoeds.自定义键名 = 键码，可以去定制按键别名
         <input type="text" placeholder="按下回车打印内容" @keyup.enter="showInfo"> 
+        <hr/>
+        按下 ctrl+y 打印内容
+        <input type="text" placeholder="按下ctrl + y打印内容" @keyup.ctrl.y="showInfo"> 
         <br/>
+        <hr/>
         别名包括 退出 => esc 等等等
         <hr/>
         要是不知道键盘对应的名字和编码这样测试
         <input type="text" placeholder="按下键盘输出内容" @keyup="showKeyNameAndCode"> 
-        <li>@keyupdown.tab 切走，并且触发 keyupdown 当失去焦点时触发</li>4
+        <li>@keyupdown.tab 切走，并且触发 keyupdown 当失去焦点时触发</li>
         <li>@keyup.caps-lock 原本名字是 CapsLock 必须这样改</li>
-        
     </div>
-   
 </body>
 <script type="text/javascript">
     Vue.config.productionTip = false
