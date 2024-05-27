@@ -10,16 +10,39 @@
 
 <body>
     <div id="root">
-        <h1>{{title}}</h1>
+        <h1>身高：{{person.height}}</h1>
+        <h1>体重：{{person.weight}}</h1>
+
+        <button @click="upHegith()">长高1cm</button> <br>
+        <button @click="upWeight()">长胖1Kg</button>
     </div>
 </body>
 <script type="text/javascript">
     Vue.config.productionTip = false
-    new Vue({
+    const vm = new Vue({
         el: '#root',
         data: {
-            title: 'Hello Vue'
+            person:{
+                height: 180,
+                weight: 70
+            }
+        },
+        methods: {
+            upHegith(){
+                this.person.height ++
+            },
+            upWeight(){
+                this.person.weight ++
+            }
+        },
+        watch: {
+            person:{
+                handler(){
+                    console.log('person 被改变了');
+                }
+            }
         }
+
     })
 </script>
 
