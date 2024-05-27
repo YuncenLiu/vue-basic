@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>今天天气很 {{isHot ? '炎热' : '凉爽'}}</h1>
+        <button @click="changeWeather()">切换天气</button>
+
+        <hr />
+
+        <h1>今天天气很 {{info}}</h1>
+
+        <button @click="changeWeather()">切换天气</button>
+
+        <hr />
+
+        <h1>今天天气很 {{info}}</h1>
+        <button @click="isHot = !isHot">切换天气</button>
+        通过 @click="isHot = !isHot" 方式，简写
+
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            title: 'Hello Vue',
+            isHot: true
+        },
+        computed: {
+            info: function () {
+                return this.isHot ? '炎热' : '凉爽'
+            }
+        },
+        methods: {
+            changeWeather() {
+                this.isHot = !this.isHot
+                console.log("切换天气:", this.isHot)
+            }
+        },
+        watch: {
+            isHot: {
+                // 当数据发生改变时，将会调用 handler 方法
+                // 通过写参数，获取新的值和修改前的值
+                handler(newData, oldData) {
+                    console.log("isHost 被修改了", newData, oldData);
+                },
+                // 初始化时让 handler 调用一下
+                immediate: true
+            },
+        }
+    })
+
+    // 需要注意的是， vm.$watch 和 new Vue对象里面二者只能存在其一
+    vm.$watch('info', {
+        handler(newData, oldData) {
+            console.log("isHost 被修改了", newData, oldData);
+        },
+        immediate: true
+    })
+</script>
+
+</html>

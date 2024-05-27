@@ -68,3 +68,31 @@ methods: {
 5. 备注
    1. 计算属性最终会出现在 vm 上，直接读取使用即可
    2. 如果计算属性要被修改，那必须写 set 函数去响应修改，且 set 中要引起计算时依赖的数据
+
+```html
+<span>{{computedFullName}}</span> <br /><br />
+<span>{{simpleFulName}}</span> <br /><br />
+```
+
+```js
+computed: {
+    computedFullName: {
+        get() {
+            console.log("computedFullName get 被调用了")
+            return this.firstName + ' - ' + this.lastName
+        },
+        // 当数据被修改时，将会调用 set 方法
+        set(value){
+            console.log("computedFullName set 方法被调用了:",value)
+            const arr = value.split('-')
+            this.firstName = arr[0]
+            this.lastName = arr[1]
+        }
+    },
+    simpleFulName:function(){
+        console.log("simpleFulName get 被调用了")
+        return this.firstName + ' - ' + this.lastName
+    }
+}
+```
+

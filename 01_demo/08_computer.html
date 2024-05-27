@@ -22,6 +22,9 @@
         <hr>
         全名：<span>{{computedFullName}}</span> <br /><br />
         使用 computed 计算属性，会调用 get 方法
+        <hr>
+        全名：<span>{{simpleFulName}}</span> <br /><br />
+        使用 computed 计算属性，简写 使用:function()... 代替 get(){...}
 
     </div>
 </body>
@@ -42,16 +45,20 @@
         computed: {
             computedFullName: {
                 get() {
-                    console.log("get 被调用了")
+                    console.log("computedFullName get 被调用了")
                     return this.firstName + ' - ' + this.lastName
                 },
                 // 当数据被修改时，将会调用 set 方法
                 set(value){
-                    console.log("set 方法被调用了:",value)
+                    console.log("computedFullName set 方法被调用了:",value)
                     const arr = value.split('-')
                     this.firstName = arr[0]
                     this.lastName = arr[1]
                 }
+            },
+            simpleFulName:function(){
+                console.log("simpleFulName get 被调用了")
+                return this.firstName + ' - ' + this.lastName
             }
         }
     })
