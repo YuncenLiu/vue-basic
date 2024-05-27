@@ -10,21 +10,24 @@
 
 <body>
     <div id="root">
-        姓：<input type="text" v-model="firstName"> <br/><br/>
-        名：<input type="text" v-model="lastName"> <br/><br/>
+        姓：<input type="text" v-model="firstName"> <br /><br />
+        名：<input type="text" v-model="lastName"> <br /><br />
 
         <hr>
-        全名：<span>{{firstName}} - {{lastName}}</span>  <br/><br/>
-        使用插值语法，不符合Vue的风格 
+        全名：<span>{{firstName}} - {{lastName}}</span> <br /><br />
+        使用插值语法，不符合Vue的风格
         <hr>
-        全名：<span>{{fullName()}}</span>  <br/><br/>
-        使用插值语法，不符合Vue的风格 
+        全名：<span>{{fullName()}}</span> <br /><br />
+        使用插值语法，不符合Vue的风格
+        <hr>
+        全名：<span>{{computedFullName}}</span> <br /><br />
+        使用 computed 计算属性，会调用 get 方法
 
     </div>
 </body>
 <script type="text/javascript">
     Vue.config.productionTip = false
-    new Vue({
+    const vm = new Vue({
         el: '#root',
         data: {
             title: 'Hello Vue',
@@ -32,8 +35,23 @@
             lastName: '三'
         },
         methods: {
-            fullName(){
+            fullName() {
                 return this.firstName + ' - ' + this.lastName
+            }
+        },
+        computed: {
+            computedFullName: {
+                get() {
+                    console.log("get 被调用了")
+                    return this.firstName + ' - ' + this.lastName
+                },
+                // 当数据被修改时，将会调用 set 方法
+                set(value){
+                    console.log("set 方法被调用了:",value)
+                    const arr = value.split('-')
+                    this.firstName = arr[0]
+                    this.lastName = arr[1]
+                }
             }
         }
     })
