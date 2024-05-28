@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript" src="../js/dayjs.min.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h3>{{title}}</h3>
+        <h3>{{time}}</h3>
+        <hr>
+        使用计算属性实现
+        <h3>{{fmtTime}}</h3>
+        <hr>
+        使用 methods 实现
+        <h3>{{getFmtTime()}}</h3>
+        <hr>
+        使用过滤器实现
+        <h3>现在的时间是 => {{time | timeFormater}}</h3>
+        <hr>
+        过滤添加参数
+        <h3>现在的时间是 => {{time | timeFormater('HH:mm:ss')}}</h3>
+        <hr>
+        双层过滤
+        <h3>现在的时间是 => {{time | timeFormater('YYYY-MM-DD') | mySlice}}</h3>
+        <hr>
+        
+        <h3 :X="msg | mySlice">DOM 节点，查看属性 X</h3>
+        <hr>
+    </div>
+
+
+    <div id="root2">
+        <h3>{{title | mySlice}}</h3>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    // 全局过滤器，注意，必须要在Vue实例之前创建过滤器
+    Vue.filter('mySlice',function(value){
+        return value.slice(0,3)
+    })
+
+    new Vue({
+        el: '#root',
+        data: {
+            title: 'Hello Vue',
+            time: 1621561377603,
+            msg: '你好，我的世界'
+        },
+        methods: {
+            getFmtTime(){
+                return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+            }
+        },
+        computed:{
+            fmtTime(){
+                return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+            }
+        },
+        filters:{
+            // ES6 的形参默认值
+            timeFormater(value,str='YYYY-MM-DD HH:mm:ss'){
+                return dayjs(value).format(str)
+            }
+        }
+    })
+
+    new Vue({
+        el: '#root2',
+        data: {
+            title: 'This Root2'
+        }
+    })
+</script>
+
+</html>

