@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>很普通的 v-for</h2>
+        <ul>
+            <li v-for="p in persons" :key="p.id">
+                {{p.name}} - {{p.age}}
+            </li>
+        </ul>
+        <br/><br/>
+        <hr/>
+        <h2>:key=index 形式</h2>
+        <ul>
+            <li v-for="(p,index) of persons" :key="index">
+                {{p.name}} - {{p.age}} - {{index}}
+            </li>
+        </ul>
+        <br/><br/>
+        <hr/>
+        <h2>也可以遍历对象，注意的是，第一个值是value，第二个才是属性名称</h2>
+        <ul>
+            <li v-for="(value,name) of car">
+                {{name}} - {{value}} 
+            </li>
+        </ul>
+        <br/><br/>
+        <hr/>
+        <h2>也可以遍历字符串，但是一般不这样使用</h2>
+        <ul>
+            <li v-for="(char,index) of str" :key="index">
+                {{char}} - {{index}} 
+            </li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el: '#root',
+        data: {
+            persons: [
+                { id: '001', name: '章三', age: '18' },
+                { id: '002', name: '里斯', age: '24' },
+                { id: '003', name: '王武', age: '19' },
+            ],
+            car:{
+                name:'A7',
+                price:'60W',
+                color:'black'
+            },
+            str: 'hello'
+        }
+    })
+</script>
+
+</html>

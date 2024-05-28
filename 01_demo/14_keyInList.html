@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <ul>
+            <li v-for="(p,index) in persons" :key="p.id">
+                {{p.name}} - {{p.age}}
+                <input type="text"/>
+            </li>
+        </ul>
+        <button @click="add">添加一个对象</button>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el: '#root',
+        data: {
+            persons: [
+                { id: '001', name: '章三', age: '18' },
+                { id: '002', name: '里斯', age: '24' },
+                { id: '003', name: '王武', age: '19' },
+            ],
+        }, methods: {
+            add() {
+                const p = { id: '004', name: "老六", age: 40 }
+                this.persons.unshift(p)
+            }
+        },
+    })
+</script>
+
+</html>
