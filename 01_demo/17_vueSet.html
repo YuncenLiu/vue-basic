@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h3>{{title}}</h3>
+        <button @click="addSex">添加性别属性，默认为男</button> <br><br>
+        <button @click="student.age ++">年龄 +1</button>
+        <h3>姓名：{{student.name}}</h3>
+        <h3>年龄：{{student.age}}</h3>
+        <h3 v-if="student.sex">性别：{{student.sex}}</h3>
+        <br><br><hr>
+        <ul>
+            <li v-for="(h,index) in hobby" :key="index">{{h}}</li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            title: 'Hello Vue',
+            student: {
+                name: '张三',
+                age: 19,
+                // sex: '男'
+            },
+            hobby:['抽烟','喝酒','烫头']
+        },
+        // 通过后续 Vue.set(vm._data.studnet,'sex','男') 添加属性
+        // vm.$set(vm._data.studnet,'sex','男')
+        methods:{
+            addSex(){
+                Vue.set(this.student,'sex','男')
+            }
+        }
+    })
+</script>
+
+</html>

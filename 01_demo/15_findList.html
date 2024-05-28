@@ -43,6 +43,20 @@
             </li>
         </ul>
 
+        <br /><br />
+        <hr />
+        替换数组中的内容
+        <br />
+        <br />
+        <button @click="updateArr">替换数组中的内容</button>
+        <br>
+        <br />
+        <ul>
+            <li v-for="p in sortFilPerson" :key="p.id">
+                {{p.id}} - {{p.name}} -- {{p.age}} -- {{p.sex}}
+            </li>
+        </ul>
+
     </div>
 </body>
 <script type="text/javascript">
@@ -70,6 +84,13 @@
                         return p.name.indexOf(val) !== -1
                     })
                 }
+            }
+        },
+        methods: {
+            updateArr(){
+                // this.persons[0].name = '马小梅' // 管用
+                // this.persons[0] = { id: '001', name: '马小梅', age: 21, sex: '女' } // 不管用
+                this.persons.splice(0,1,{ id: '001', name: '马东煤', age: 22, sex: '男' })
             }
         },
         computed: {

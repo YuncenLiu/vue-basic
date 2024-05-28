@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>{{title}}</h1>
+        <!--  prevent 阻止默认行为 -->
+        <form @submit.prevent="fromSubmit">
+            <label for="demo">账号：</label>
+            <input type="text" id="demo" v-model.trim="account"> <br> <br>
+            <label for="password">密码：</label>
+            <input type="password" id="password" v-model="password"> <br> <br>
+            <label for="age">年龄：</label>
+            <input type="number" id="age" v-model.number="age"> <br> <br>
+            <label>性别：</label>
+            男 <input type="radio" value="male" v-model="sex">
+            女 <input type="radio" value="female" v-model="sex"> <br> <br>
+            <label>爱好：</label>
+            抽烟 <input type="checkbox" v-model="hobby" value="smoke">
+            喝酒 <input type="checkbox" v-model="hobby" value="drink">
+            烫头 <input type="checkbox" v-model="hobby" value="heat"> <br> <br>
+            <label>所属校区：</label>
+            <select v-model="city">
+                <option value="">请选择校区</option>
+                <option value="beijing">北京</option>
+                <option value="shanghai">上海</option>
+                <option value="shenzhen">深圳</option>
+                <option value="wuhan">武汉</option>
+            </select> <br> <br>
+            <label for="other">其他信息：</label>
+            <textarea id="other" v-model.lazy="other"></textarea> <br> <br>
+            <input type="checkbox" v-model="agree"> <label>阅读并接收<a href="#">用户协议</a></label> <br> <br>
+            <button>提交</button>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el: '#root',
+        data: {
+            title: 'Hello Vue',
+            account: '',
+            password: '',
+            sex: 'male',
+            hobby: [],
+            city: 'beijing',
+            other: '',
+            agree: false,
+            age: ''
+        },
+        methods: {
+            fromSubmit(){
+                alert("信息提交了")
+                console.log(JSON.stringify(this._data));
+            }
+        },
+    })
+</script>
+
+</html>

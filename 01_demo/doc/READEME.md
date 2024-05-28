@@ -185,3 +185,50 @@ key 是虚拟 DOM 对象的表示，当状态的数据发生变化时，Vue 会�
 用index 作为 key 可能会引发的问题
 1. 若对数据进行修改，逆序添加，逆序删除则会破坏顺序操作，会产生没有必要的真实DOM更新，界面效果虽然没问题，但是效率低，因为其他节点的key都发生变化了。
 2. 如果结构中包含输入类DOM，会产生错误的DOM更新
+
+## Vue.set
+
+用法: `Vue.set(target,propertyName/index,value)`
+
+用响应式对象中添加一个 property，并确保这个 property 同样是响应式的，且触发视图更新，它必须用于响应式对象上添加新 property。
+
+注意对象不能是 Vue 实例，或 Vue实例的根数据对象
+
+总结 Vue 监视数据原理
+1. Vue会监视data 中所有层次的数据
+2. 如何监视？
+    通过 setter 实现监视，且要在 new Vue 时就要传入要监视的数据
+    1. 对象中后追加的属性，Vue默认不做响应式处理
+    2. 如果需要给后添加的属性做响应式，需要：
+        ```
+        Vue.set(target, propertyName/index, value) 或
+        vm.$set(target, propertyName/index, value)
+        ```
+3. 如何监测数组中的数据？通过包裹数组更新元素的方法实现，本质就是做了两件事
+    1. 调用原生对应的方法对数组进行更新
+    2. 重新解析模板，进而更新页面
+4. 在Vue修改数组中的某个元素一定要用如下方法
+    1. 使用这些 API: push、pop、shift、unshfit、splice、reverse
+    2. Vue.set() 或 vm.$set()
+
+特别注意，Vue.set() 和 vm.$set() 不能给 vm 或 vm的根数据对象添加属性！！
+
+
+## 表单收集
+
+若 `<input type="text"/>` 则 v-model 收集的是 value 的值，用户输入的就是 value 值
+
+若 `<input type="radio"/>` 则 v-model 收集的是 value值，且要给标签配置 value 值
+
+若 `<input type="checkbox">`
+
+1. 没有配置 input 的 value 属性，那么收集的就是 checked （勾选 or 未勾选，是布尔值）
+2. 配置input的value属性
+    1. v-model 的初始值是非数组，那么收集的就是 checked（勾选 or 未勾选，是布尔值）
+    2. v-model 的初始值是数组，那么收集的就是数组
+
+备注： v-model 的三个修饰符
+
++ lazy: 失去焦点再收集数据
++ number：输入字符串转为有效数字
++ trim：输入首尾空格过滤
