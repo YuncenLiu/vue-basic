@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If And Show</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <button @click="head=!head">显示/隐藏</button> <br/><br/>
+        <hr/>
+        使用 v-show 将属性 display:none 隐藏DOM 
+        <h1 v-show="head">{{title}}</h1> <br/><br/>
+        <hr/>    
+        使用 v-if 直接把 dom 干掉
+        <h1 v-if="head">{{title}}</h1> <br/><br/>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el: '#root',
+        data: {
+            title: 'Hello Vue',
+            head: true
+        }
+    })
+</script>
+
+</html>

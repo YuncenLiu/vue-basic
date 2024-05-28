@@ -13,8 +13,18 @@
         <h1>身高：{{person.height}}</h1>
         <h1>体重：{{person.weight}}</h1>
 
-        <button @click="upHegith()">长高1cm</button> <br>
-        <button @click="upWeight()">长胖1Kg</button>
+        <button @click="upHegith()">长高1cm</button> <br><br>
+        <button @click="upWeight()">长胖1Kg</button> <br><br>
+        <button @click="person = {height:150,weight:40}">彻底修改person对象</button> <br><br>
+
+        <hr/>
+        <br/>
+        对计算属性进行监视
+        <br/>
+
+        姓：<input type="text" v-model="firstName"> <br/> <br/>
+        名：<input type="text" v-model="lastName"> <br/> <br/>
+        全名：<span>{{fullName}}</span>
     </div>
 </body>
 <script type="text/javascript">
@@ -22,25 +32,59 @@
     const vm = new Vue({
         el: '#root',
         data: {
-            person:{
+            person: {
                 height: 180,
                 weight: 70
-            }
+            },
+            firstName: "张",
+            lastName: "三",
+            fullName: "张 - 三"
+        
         },
         methods: {
-            upHegith(){
-                this.person.height ++
+            upHegith() {
+                this.person.height++
             },
-            upWeight(){
-                this.person.weight ++
+            upWeight() {
+                this.person.weight++
             }
         },
         watch: {
-            person:{
-                handler(){
-                    console.log('person 被改变了');
-                }
+            // 'person.height': {
+            //     handler(newData,oldData) {
+            //         console.log('person.height 被改变了',newData,oldData)
+            //     },
+            //     // 初始化时让 handler 调用一下
+            //     immediate: true
+            // },
+            // person: {
+            //     handler(newData,oldData) {
+            //         console.log('person 整个对象被修改了',newData,oldData)
+            //     },
+            // },
+            // 'person': {
+            //     deep: true,
+            //     handler(newData, oldData) {
+            //         console.log('person 内任意一个属性被改变了', newData, oldData)
+            //     },
+            //     // 初始化时让 handler 调用一下
+            //     immediate: true
+            // },
+
+            // 简写
+            person(newData, oldData){
+                console.log('person 内任意一个属性被改变了', newData, oldData)
+            },
+
+            firstName(newValue){
+                this.fullName = newValue + ' - ' + this.lastName
+            },
+            lastName(newValue){
+                setTimeout(()=>{
+                    this.fullName = this.firstName + ' - ' + newValue
+                },1000)
             }
+
         }
 
     })
