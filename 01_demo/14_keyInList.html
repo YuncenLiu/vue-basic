@@ -17,6 +17,18 @@
             </li>
         </ul>
         <button @click="add">添加一个对象</button>
+        <br> <br> <hr> <br> <br>
+        解决更新时的一个问题
+        <br> <br> 
+        <button @click="updateZhang()">修改 章三 信息</button>
+        <br> <br>
+        <ul>
+            <li v-for="(p,index) in persons" :key="p.id">
+                {{p.name}} - {{p.age}}
+                <input type="text"/>
+            </li>
+        </ul>
+
     </div>
 </body>
 <script type="text/javascript">
@@ -33,6 +45,14 @@
             add() {
                 const p = { id: '004', name: "老六", age: 40 }
                 this.persons.unshift(p)
+                // this.persons.push(p)
+            },
+            updateZhang(){
+                // this.persons[0].name='张三'
+                // this.persons[0].age='张三'
+
+                this.persons[0] =  { id: '001', name: '张三', age: '40' }
+
             }
         },
     })

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    let data = {
+        name: "章三",
+        address: "北京"
+    }
+
+    const obs = new Observer(data)
+    console.log(obs)
+
+    let vm = {}
+    vm._data = data = obs
+
+    function Observer(obj) {
+        const keys = Object.keys(obj)
+        keys.forEach((k) => {
+            Object.defineProperty(this, k, {
+                get() {
+                    return obj[k]
+                },
+                set(val) {
+                    console.log(`${k}被修改了`)
+                    obj[k] = val
+                }
+            })
+        })
+    }
+
+</script>
+
+</html>
