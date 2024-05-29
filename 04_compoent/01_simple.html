@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+       <people></people>
+       <hr>
+       <company></company>
+       <hr>
+       <hello></hello>
+
+    </div>
+
+    <div id="root2">
+        <hello></hello>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    const people = Vue.extend({
+        template:
+            `
+            <div>
+                <h2>姓名：{{name}}</h2>
+                <h2>年龄：{{age}}</h2>
+            </div>
+        `,
+        data() {
+            return {
+                name: '张三',
+                age: 20,
+            }
+        }
+    })
+
+    const company = Vue.extend({
+        template:
+            `
+            <div>
+                <h2>职位：{{post}}</h2>
+                <h2>等级：{{level}}</h2>
+            </div>
+        `,
+        data() {
+            return {
+                post: '经理',
+                level: 4,
+            }
+        }
+    })
+
+    const hello = Vue.extend({
+        template:`
+            <div>
+                <h2>{{msg}}</h2>
+            </div>
+        `,
+        data(){
+            return {
+                msg: '你好'
+            }
+        }
+    })
+
+
+    Vue.component('hello',hello)
+
+    new Vue({
+        el: '#root',
+        // 局部注册
+        components: {
+            people,
+            company
+        }
+    })
+
+    new Vue({
+        el: '#root2',
+    })
+</script>
+
+</html>

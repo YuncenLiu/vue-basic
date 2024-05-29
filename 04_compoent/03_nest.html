@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌套关系</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    const people = Vue.extend({
+        name: 'people',
+        template:
+            `
+            <div>
+                <h2>姓名：{{name}}</h2>
+                <h2>年龄：{{age}}</h2>
+            </div>
+        `,
+        data() {
+            return {
+                name: '张三',
+                age: 20,
+            }
+        }
+    })
+
+    // 被注册的组件要先写
+    const school = Vue.extend({
+        name: 'school',
+        template:
+            `
+            <people></people>
+        `,
+        data() {
+            return {
+                name: '张三',
+                age: 20,
+            }
+        },
+        components:{
+            people
+        }
+    })
+
+
+    const hello = Vue.extend({
+        name: 'hello',
+        template:`
+            <div>{{msg}}</div>
+        `,
+        data(){
+            return{
+                msg:'你好 Vue'
+            }
+        }
+    })
+
+
+    const app = Vue.extend({
+        name:'app',
+        template:`
+            <div>
+                <hello></hello>
+                <school></school>
+            </div>
+        `,
+        components:{
+            hello,
+            school
+        }
+    })
+
+    new Vue({
+        template:`<app></app>`,
+        el: '#root',
+        data: {
+            title: 'Hello Vue'
+        },
+        components:{
+            app,
+        }
+    })
+</script>
+
+</html>
