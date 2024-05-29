@@ -9,35 +9,77 @@
 </head>
 <!-- 需求1：定义一个 v-big 指令，和 v-text 类似，但是会把绑定的值放大10倍 -->
 <!-- 需求2：定义一个 v-fbind 指令，和 v-bind 类似，但是可以让其绑定的 input 元素默认获取焦点 -->
+
 <body>
     <div id="root">
         <h1>初始化的值: <span v-text="n"></span></h1>
-        <h1>放大10倍后的n值是: <span v-big="n"></span></h1>
+        <hr> <br>
+        使用 v-big-number 自定义标签，需要定义为 bigNumber，也可以定义为 'big-number':function(){...}
+        <h1>放大10倍后的n值是: <span v-big-number="n"></span></h1>
         <button @click="n++">点我+1</button>
         <hr>
         <!-- autofocus 自动获取焦点 -->
+        <input type="text" v-fbind:value="n"> <br><br>
         <input type="text" v-fbind:value="n">
     </div>
 </body>
 <script type="text/javascript">
     Vue.config.productionTip = false
+    Vue.directive('fbind', {
+        // 当指令与元素成功绑定时（一上来）
+        bind(element, binding) {
+            // 此处的 this 是 windows
+            console.log('bigNumber', this);
+            console.log('bind')
+            element.value = binding.value
+        },
+        // 指令所在元素被插入页面时
+        inserted(element, binding) {
+
+            console.log('inserted')
+            element.focus()
+        },
+        // 指令所在模版被重新解析时
+        update(element, binding) {
+            console.log('update')
+            element.focus()
+            element.value = binding.value
+        }
+    })
     new Vue({
         el: '#root',
         data: {
             n: 1
         },
-        directives:{
+        directives: {
             // 何时会被调用？ 
             // 1、指定与元素成功绑定时 （一上来）就绑定
             // 2、指令所在的模板被重新解析时
-            big(element,binding){
+            bigNumber(element, binding) {
                 // console.log(element,binding.value)
                 element.innerText = binding.value * 10
             },
-            fbind(element,binding){
-                element.value = binding.value
-                element.focus()
-            }
+            // fbind:{
+            //     // 当指令与元素成功绑定时（一上来）
+            //     bind(element,binding){
+            //         // 此处的 this 是 windows
+            //         console.log('bigNumber',this);
+            //         console.log('bind')
+            //         element.value = binding.value
+            //     },
+            //     // 指令所在元素被插入页面时
+            //     inserted(element,binding){
+
+            //         console.log('inserted')
+            //         element.focus()
+            //     },
+            //     // 指令所在模版被重新解析时
+            //     update(element,binding){
+            //         console.log('update')
+            //         element.focus()
+            //         element.value = binding.value
+            //     }
+            // }
         }
     })
 </script>

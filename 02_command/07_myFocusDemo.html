@@ -5,13 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello Vue</title>
+    <style>
+        .demo {
+            background-color: orange;
+        }
+    </style>
 </head>
 
 <body>
-    <button>点我创建一个输入框</button>
+    <button id="btn">点我创建一个输入框</button>
+    <script type="text/javascript">
+        const btn = document.getElementById('btn')
+        btn.onclick = () => {
+            const input = document.createElement('input')
+            input.className = 'demo'
+            input.value = 99
+            input.onclick = () => {
+                alert(1)
+            }
+
+            // input.parentElement.style.backgroundColor = 'skyblue'
+            // 报错了，
+
+            console.log('appChild 执行之前', input.parentElement);
+
+            document.body.appendChild(input)
+            console.log('appChild 执行之后', input.parentElement);
+            input.focus()
+        }
+
+    </script>
 </body>
 <script type="text/javascript">
-    
+
 </script>
 
 </html>
