@@ -10,44 +10,86 @@
 
 <body>
     <div id="root">
-        <h1 :style="{opacity}">{{title}}</h1>
+        <h1 :style="{opacity}">{{title}}</h1> 
+        这个停止之后，定时器还在执行
+        <button @click="startAndStop">启动/停止</button>  <br>  <br>
+        <hr>
+        通过停止定时器达到停止目的
+        <button @click="stop">启动/停止</button> 
+        <h1>当前状态：{{flag?'启动':'关闭'}}</h1>  <br><br>
+        <button @click="bye">bye bye</button>
     </div>
 </body>
 <script type="text/javascript">
     Vue.config.productionTip = false
-    const vm = new Vue({
+    new Vue({
         el: '#root',
+        // template: `<div><h1 :style="{opacity}">{{title}}</h1> <button @click="startAndStop">启动/停止</button></div>`,
         data: {
             title: 'Vue 生命周期',
-            opacity: 1
+            opacity: 1,
+            flag: true
         },
         methods: {
+            startAndStop() {
+                console.log("启动/暂停")
+                this.flag = !this.flag
+                this.opacity = 1
+            },
+            stop(){
+                clearInterval(this.timer)
+            },
+            bye(){
+                console.log("执行销毁");
+                this.$destroy()
+            }
         },
 
         beforeCreate() {
-            console.log("beforeCreate",this);    
+            console.log("beforeCreate", this);
         },
         created() {
-            console.log('created',this);
+            console.log('created', this);
         },
         beforeMount() {
             // 页面呈现的都是 未经Vue编译的 DOM结构，所有对 DOM 结构的操作，最终都不奏效
             // 原因是紧随其后 Vue 将虚拟DOM转化为 真实 DOM
-            console.log('beforeMount',this);
+            console.log('beforeMount', this);
         },
         // Vue 完成模版解析并把初始的真实 DOM 元素放入页面后，调用 monted
         mounted() {
             // 页面都是经过 Vue 编译的 DOM，对DOM操作均有效（尽可能避免）
             // 一般在此过程进行 定时器、网络请求、订阅消息、绑定自定义事件等初始化操作
-            console.log('mounted',this);
-            setInterval(() => {
-                this.opacity -= 0.01
-                if (this.opacity <= 0) {
-                    this.opacity = 1
+            console.log('mounted', this.$el);
+            console.log('monuted', this.flag)
+            this.timer = setInterval(() => {
+                console.log('setInterval');
+                if (this.flag) {
+                    this.opacity -= 0.01
+                    if (this.opacity <= 0) {
+                        this.opacity = 1
+                    }
                 }
             }, 16)
-        }
+        },
+        // beforeUpdate() {
+        //     console.log('beforeUpdate', this.flag)
+        // },
+        // updated(){
+        //     console.log('update')
+        // }
+        beforeDestroy() {
+            // vm 中所有 data、methods 指令等，都处于可用状态，马上要执行销毁过程，一般在此阶段，关闭定时器、取消订阅消息、解除自定义事件等
+            console.log('beforeDestroy')
+            // this.$destroy()
+            // console.log("再杀一次");
+        },
+        destroyed() {
+            console.log('destroyed')
+        },
+
     })
+
 
     // window.onload = () =>{
     //     vm.change()
