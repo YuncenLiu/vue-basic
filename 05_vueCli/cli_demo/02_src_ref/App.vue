@@ -1,6 +1,8 @@
 <template>
     <div>
-        <School name="北京大学" address="南昌" :count="1"/>
+        <School ref="sch"/>
+        <h1 v-text="msg" ref="title"></h1>
+        <button @click="showDom">点我输出DOM元素</button>
     </div>
 </template>
 <script>
@@ -16,6 +18,9 @@ export default {
         }
     },
     methods: {
+        showDom(){
+            console.log(this.$refs.sch);
+        }
     },
 }
 </script>
