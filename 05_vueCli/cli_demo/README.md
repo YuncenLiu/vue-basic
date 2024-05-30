@@ -1,24 +1,8 @@
-# cli_demo
+# VueCLi 笔记
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## ref 属性
+1. 被用来给元素或子组件组册引用信息（id的替代者）
+2. 应用在 html 标签上获取的是真实 dom 元素，应用在组件标签上的是组件实例对象（vc）
+3. 使用方式
+   1. 标识： `<h1 ref="xxx"></h1>`
+   2. 获取： `this.$refs.xxx`

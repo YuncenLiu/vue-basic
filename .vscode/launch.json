@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "node-terminal",
+            "name": "运行脚本: serve",
+            "request": "launch",
+            "command": "npm run serve",
+            "cwd": "${workspaceFolder}/05_vueCli/cli_demo"
+        }
+    ]
+}
