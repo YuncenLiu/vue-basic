@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+</head>
+
+<body>
+    <div id="root">
+        <h2>localStorage</h2>
+        <button onclick="saveData()">保存 LocalStorage 数据</button>
+        <br><br>
+        <button onclick="readData()">读取 localStorage 数据</button>
+        <br><br>
+        <button onclick="removeData()">删除 localStorage 数据</button>
+        <br><br>
+        <button onclick="removeAllData()">清空 localStorage 数据</button>
+    </div>
+</body>
+<script type="text/javascript">
+    let p = {name:'张三',age:18}
+
+    function saveData(){
+        localStorage.setItem('msg',JSON.stringify(p))
+    }
+
+    function readData(){
+        const jsonP = localStorage.getItem('msg')
+        console.log(JSON.parse(jsonP).age)
+    }
+
+    function removeData(){
+        localStorage.removeItem('msg')
+    }
+
+    function removeAllData(){
+        localStorage.clear()
+    }
+</script>
+
+</html>

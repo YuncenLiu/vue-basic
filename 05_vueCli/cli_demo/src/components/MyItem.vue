@@ -4,28 +4,32 @@
       <input type="checkBox" :checked="todo.done" @click="handlerCheck(todo.id)"/>
       <span>{{todo.title}}</span>
     </label>
-    <button class="btn btn-danger" style="">删除</button>
+    <button class="btn btn-danger" @click="deleteTodo(todo.id)">删除</button>
   </li>
 </template>
 <script>
 export default {
   name: "MyItem",
-  props:['todo','changeTodo'],
-  data(){
-    return{
+  props: ['todo', 'changeTodo','removeTodo'],
+  data() {
+    return {
       done: true
     }
   },
-  methods:{
-    handlerCheck(id){
+  methods: {
+    handlerCheck(id) {
       // 通知 APP 组件将对应todo done值取反
       this.changeTodo(id)
     },
+    deleteTodo(id) {
+      if(confirm('确定删除嘛？')){
+        this.removeTodo(id)
+      }
+    }
   }
 };
 </script>
-<style lang="less" scoped >
-
+<style lang="less" scoped>
 /* item */
 li {
   list-style: none;
@@ -65,4 +69,7 @@ li:last-child {
   border-bottom: none;
 }
 
+li:hover button {
+  display: block;
+}
 </style>
