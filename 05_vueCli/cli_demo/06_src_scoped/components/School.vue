@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="school">
+  <div class="demo">
     <h2>学习名称:{{ name }}</h2>
     <h2>学校人数:{{ count }}</h2>
   </div>
@@ -15,8 +15,8 @@ export default {
   }
 };
 </script>
-<style>
-/* .school {
-    background-color: darkgray;
-} */
+<style lang="less" scoped>
+.demo {
+    background-color: pink;
+}
 </style>
