@@ -1,1 +1,3 @@
 .idea
+# Node 服务忽略文件
+/node/node_modules/
