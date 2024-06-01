@@ -323,3 +323,66 @@ npm -i less-loader@7
    2. 元素离开的样式，`v-leave` 离开起点，`v-leave-active` 离开过程中，`v-leave-to` 离开终点
    3. 使用 <transition> 包裹要过度的元素，并配置name属性
    4. 若有多个元素需要过度，则需要使用：`<transition-group>`，且每个元素都要指定 key 值
+
+## 解决跨域问题
+
+1. cors：服务端解决，服务器收到响应时，连带把特殊的响应头传递回来，浏览器看到响应头抬手就放进来了。真正意义上的解决。真正开发很少这样做，有安全隐患。
+2. jsonp: 借助 script src 巧妙避免同源策略，但有两大痛点
+   1. 只能解决 get 请求的跨域问题，post 不行
+   2. jsonp 需要前后端同时配合才能处理 后端要返回json格式
+3. proxy server： VueCli 代理解决(见下文)
+
+## VueCli配置代理
+
+### 方式一
+
+在 Vue.config.js 中配置如下
+```js
+devServer: {
+    proxy: 'http://localhost:5000'
+}
+```
+1. 优点:配置简单,请求资源时直接发送给前端 8080 即可
+2. 缺点:不能配置多个代理,不能灵活控制是否走代理,也就意味着 public 下不能存在路径相同的文件
+3. 工作方式: 当请求了前端不存在的资源时,那么该请求会转发给服务器(优先匹配前端资源)
+
+### 方式二
+
+编写 config.js 如下
+
+```ecmascript 6
+module.exports = defineConfig({
+   devServer: {
+      proxy: {
+         '/stu': {
+            target: 'http://localhost:5000',
+            pathRewrite: {'^/stu': ''},
+            // 用于支持 websocket
+            ws: true,
+            // 欺骗服务端我来自哪里,服务端是多少端口,我就欺骗它多少端口, 用于控制请求头的 host
+            // 不写默认为 true
+            changeOrigin: true
+         },
+         '/car': {
+            target: 'http://localhost:5001',
+            pathRewrite: {'^/car': ''}
+         }
+      }
+   }
+})
+```
+
+调用代理
+```js
+axios.get('http://localhost:8080/stu/students').then(
+    response =>{
+      console.log('请求成功了',response.data)
+    },
+    error => {
+      console.log('请求失败了',error.message)
+    }
+)
+```
+
+1. 优点:可以配置多个代理,且可以灵活的控制请求是否走代理
+2. 缺点:配置略微繁琐,请求资源时必须加上前缀
