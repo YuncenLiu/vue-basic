@@ -1,0 +1,12 @@
+{
+  "name": "student",
+  "version": "1.0.0",
+  "description": "A simple Node.js backend server",
+  "scripts": {
+    "students": "node src/students.js",
+    "cars": "node src/cars.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
