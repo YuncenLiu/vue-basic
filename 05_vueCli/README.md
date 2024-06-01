@@ -9,6 +9,9 @@ npm install -g @vue/cli
 2. 切换到项目目录
    进入 `/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli`
 
+注意这里不要有大写字母,否则无法创建 
+
+
 ```
 vue create cli_demo
 ```
