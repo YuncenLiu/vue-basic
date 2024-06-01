@@ -1,16 +1,16 @@
 const a = {
   mode: 'development',
-  context: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo',
+  context: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli',
   output: {
     hashFunction: 'xxhash64',
-    path: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/dist',
+    path: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/dist',
     filename: 'js/[name].js',
     publicPath: '/',
     chunkFilename: 'js/[name].js'
   },
   resolve: {
     alias: {
-      '@': '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/src',
+      '@': '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/src',
       vue$: 'vue/dist/vue.runtime.esm.js'
     },
     extensions: [
@@ -23,17 +23,17 @@ const a = {
     ],
     modules: [
       'node_modules',
-      '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules',
-      '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/@vue/cli-service/node_modules'
+      '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules',
+      '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/@vue/cli-service/node_modules'
     ]
   },
   resolveLoader: {
     modules: [
-      '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/@vue/cli-plugin-babel/node_modules',
-      '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/@vue/cli-service/lib/config/vue-loader-v15-resolve-compat',
+      '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/@vue/cli-plugin-babel/node_modules',
+      '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/@vue/cli-service/lib/config/vue-loader-v15-resolve-compat',
       'node_modules',
-      '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules',
-      '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/@vue/cli-service/node_modules'
+      '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules',
+      '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/@vue/cli-service/node_modules'
     ]
   },
   module: {
@@ -52,7 +52,7 @@ const a = {
         use: [
           /* config.module.rule('vue').use('vue-loader') */
           {
-            loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/@vue/vue-loader-v15/lib/index.js',
+            loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/@vue/vue-loader-v15/lib/index.js',
             options: {
               compilerOptions: {
                 whitespace: 'condense'
@@ -138,7 +138,7 @@ const a = {
             use: [
               /* config.module.rule('css').oneOf('vue-modules').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -146,7 +146,7 @@ const a = {
               },
               /* config.module.rule('css').oneOf('vue-modules').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -158,7 +158,7 @@ const a = {
               },
               /* config.module.rule('css').oneOf('vue-modules').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -176,7 +176,7 @@ const a = {
             use: [
               /* config.module.rule('css').oneOf('vue').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -184,7 +184,7 @@ const a = {
               },
               /* config.module.rule('css').oneOf('vue').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -192,7 +192,7 @@ const a = {
               },
               /* config.module.rule('css').oneOf('vue').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -210,7 +210,7 @@ const a = {
             use: [
               /* config.module.rule('css').oneOf('normal-modules').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -218,7 +218,7 @@ const a = {
               },
               /* config.module.rule('css').oneOf('normal-modules').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -226,7 +226,7 @@ const a = {
               },
               /* config.module.rule('css').oneOf('normal-modules').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -243,7 +243,7 @@ const a = {
             use: [
               /* config.module.rule('css').oneOf('normal').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -251,7 +251,7 @@ const a = {
               },
               /* config.module.rule('css').oneOf('normal').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -259,7 +259,7 @@ const a = {
               },
               /* config.module.rule('css').oneOf('normal').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -283,7 +283,7 @@ const a = {
             use: [
               /* config.module.rule('postcss').oneOf('vue-modules').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -291,7 +291,7 @@ const a = {
               },
               /* config.module.rule('postcss').oneOf('vue-modules').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -303,7 +303,7 @@ const a = {
               },
               /* config.module.rule('postcss').oneOf('vue-modules').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -321,7 +321,7 @@ const a = {
             use: [
               /* config.module.rule('postcss').oneOf('vue').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -329,7 +329,7 @@ const a = {
               },
               /* config.module.rule('postcss').oneOf('vue').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -337,7 +337,7 @@ const a = {
               },
               /* config.module.rule('postcss').oneOf('vue').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -355,7 +355,7 @@ const a = {
             use: [
               /* config.module.rule('postcss').oneOf('normal-modules').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -363,7 +363,7 @@ const a = {
               },
               /* config.module.rule('postcss').oneOf('normal-modules').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -371,7 +371,7 @@ const a = {
               },
               /* config.module.rule('postcss').oneOf('normal-modules').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -388,7 +388,7 @@ const a = {
             use: [
               /* config.module.rule('postcss').oneOf('normal').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -396,7 +396,7 @@ const a = {
               },
               /* config.module.rule('postcss').oneOf('normal').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -404,7 +404,7 @@ const a = {
               },
               /* config.module.rule('postcss').oneOf('normal').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -428,7 +428,7 @@ const a = {
             use: [
               /* config.module.rule('scss').oneOf('vue-modules').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -436,7 +436,7 @@ const a = {
               },
               /* config.module.rule('scss').oneOf('vue-modules').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -448,7 +448,7 @@ const a = {
               },
               /* config.module.rule('scss').oneOf('vue-modules').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -473,7 +473,7 @@ const a = {
             use: [
               /* config.module.rule('scss').oneOf('vue').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -481,7 +481,7 @@ const a = {
               },
               /* config.module.rule('scss').oneOf('vue').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -489,7 +489,7 @@ const a = {
               },
               /* config.module.rule('scss').oneOf('vue').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -514,7 +514,7 @@ const a = {
             use: [
               /* config.module.rule('scss').oneOf('normal-modules').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -522,7 +522,7 @@ const a = {
               },
               /* config.module.rule('scss').oneOf('normal-modules').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -530,7 +530,7 @@ const a = {
               },
               /* config.module.rule('scss').oneOf('normal-modules').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -554,7 +554,7 @@ const a = {
             use: [
               /* config.module.rule('scss').oneOf('normal').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -562,7 +562,7 @@ const a = {
               },
               /* config.module.rule('scss').oneOf('normal').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -570,7 +570,7 @@ const a = {
               },
               /* config.module.rule('scss').oneOf('normal').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -601,7 +601,7 @@ const a = {
             use: [
               /* config.module.rule('sass').oneOf('vue-modules').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -609,7 +609,7 @@ const a = {
               },
               /* config.module.rule('sass').oneOf('vue-modules').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -621,7 +621,7 @@ const a = {
               },
               /* config.module.rule('sass').oneOf('vue-modules').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -649,7 +649,7 @@ const a = {
             use: [
               /* config.module.rule('sass').oneOf('vue').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -657,7 +657,7 @@ const a = {
               },
               /* config.module.rule('sass').oneOf('vue').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -665,7 +665,7 @@ const a = {
               },
               /* config.module.rule('sass').oneOf('vue').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -693,7 +693,7 @@ const a = {
             use: [
               /* config.module.rule('sass').oneOf('normal-modules').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -701,7 +701,7 @@ const a = {
               },
               /* config.module.rule('sass').oneOf('normal-modules').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -709,7 +709,7 @@ const a = {
               },
               /* config.module.rule('sass').oneOf('normal-modules').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -736,7 +736,7 @@ const a = {
             use: [
               /* config.module.rule('sass').oneOf('normal').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -744,7 +744,7 @@ const a = {
               },
               /* config.module.rule('sass').oneOf('normal').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -752,7 +752,7 @@ const a = {
               },
               /* config.module.rule('sass').oneOf('normal').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -786,7 +786,7 @@ const a = {
             use: [
               /* config.module.rule('less').oneOf('vue-modules').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -794,7 +794,7 @@ const a = {
               },
               /* config.module.rule('less').oneOf('vue-modules').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -806,7 +806,7 @@ const a = {
               },
               /* config.module.rule('less').oneOf('vue-modules').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -831,7 +831,7 @@ const a = {
             use: [
               /* config.module.rule('less').oneOf('vue').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -839,7 +839,7 @@ const a = {
               },
               /* config.module.rule('less').oneOf('vue').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -847,7 +847,7 @@ const a = {
               },
               /* config.module.rule('less').oneOf('vue').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -872,7 +872,7 @@ const a = {
             use: [
               /* config.module.rule('less').oneOf('normal-modules').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -880,7 +880,7 @@ const a = {
               },
               /* config.module.rule('less').oneOf('normal-modules').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -888,7 +888,7 @@ const a = {
               },
               /* config.module.rule('less').oneOf('normal-modules').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -912,7 +912,7 @@ const a = {
             use: [
               /* config.module.rule('less').oneOf('normal').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -920,7 +920,7 @@ const a = {
               },
               /* config.module.rule('less').oneOf('normal').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -928,7 +928,7 @@ const a = {
               },
               /* config.module.rule('less').oneOf('normal').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -959,7 +959,7 @@ const a = {
             use: [
               /* config.module.rule('stylus').oneOf('vue-modules').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -967,7 +967,7 @@ const a = {
               },
               /* config.module.rule('stylus').oneOf('vue-modules').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2,
@@ -979,7 +979,7 @@ const a = {
               },
               /* config.module.rule('stylus').oneOf('vue-modules').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -1004,7 +1004,7 @@ const a = {
             use: [
               /* config.module.rule('stylus').oneOf('vue').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -1012,7 +1012,7 @@ const a = {
               },
               /* config.module.rule('stylus').oneOf('vue').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -1020,7 +1020,7 @@ const a = {
               },
               /* config.module.rule('stylus').oneOf('vue').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -1045,7 +1045,7 @@ const a = {
             use: [
               /* config.module.rule('stylus').oneOf('normal-modules').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -1053,7 +1053,7 @@ const a = {
               },
               /* config.module.rule('stylus').oneOf('normal-modules').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -1061,7 +1061,7 @@ const a = {
               },
               /* config.module.rule('stylus').oneOf('normal-modules').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -1085,7 +1085,7 @@ const a = {
             use: [
               /* config.module.rule('stylus').oneOf('normal').use('vue-style-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/vue-style-loader/index.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/vue-style-loader/index.js',
                 options: {
                   sourceMap: false,
                   shadowMode: false
@@ -1093,7 +1093,7 @@ const a = {
               },
               /* config.module.rule('stylus').oneOf('normal').use('css-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/css-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/css-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   importLoaders: 2
@@ -1101,7 +1101,7 @@ const a = {
               },
               /* config.module.rule('stylus').oneOf('normal').use('postcss-loader') */
               {
-                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/postcss-loader/dist/cjs.js',
+                loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/postcss-loader/dist/cjs.js',
                 options: {
                   sourceMap: false,
                   postcssOptions: {
@@ -1131,10 +1131,10 @@ const a = {
         use: [
           /* config.module.rule('js').use('babel-loader') */
           {
-            loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/babel-loader/lib/index.js',
+            loader: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/babel-loader/lib/index.js',
             options: {
               cacheCompression: false,
-              cacheDirectory: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/node_modules/.cache/babel-loader',
+              cacheDirectory: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/node_modules/.cache/babel-loader',
               cacheIdentifier: 'fcb51c4e'
             }
           }
@@ -1232,7 +1232,7 @@ const a = {
         title: 'cli_demo',
         scriptLoading: 'defer',
         templateParameters: function () { /* omitted long function */ },
-        template: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/public/index.html'
+        template: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/public/index.html'
       }
     ),
     /* config.plugin('copy') */
@@ -1240,14 +1240,14 @@ const a = {
       {
         patterns: [
           {
-            from: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/public',
-            to: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/dist',
+            from: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/public',
+            to: '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/dist',
             toType: 'dir',
             noErrorOnMissing: true,
             globOptions: {
               ignore: [
                 '**/.DS_Store',
-                '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/cli_demo/public/index.html'
+                '/Users/xiang/xiang/study/front-end/vue-basic/05_vueCli/public/index.html'
               ]
             },
             info: {

@@ -1,16 +1,23 @@
-<template lang="">
+<template>
   <li>
     <label>
       <input type="checkBox" :checked="todo.done" @click="handlerCheck(todo.id)"/>
-      <span v-show="!todo.isEdit">{{todo.title}}</span>
-      <input type="text" v-show="todo.isEdit" :value="todo.title" @blur="handleBluer(todo,$event)"/>
+      <span v-show="!todo.isEdit">{{ todo.title }}</span>
+      <input
+          type="text"
+          v-show="todo.isEdit"
+          :value="todo.title"
+          @blur="handleBluer(todo,$event)"
+          ref="inputTitle"
+      />
     </label>
     <button class="btn btn-danger" @click="deleteTodo(todo.id)">删除</button>
-    <button class="btn btn-edit"  v-show="!todo.isEdit" @click="updateTodo(todo)">编辑</button>
+    <button class="btn btn-edit" v-show="!todo.isEdit" @click="updateTodo(todo)">编辑</button>
   </li>
 </template>
 <script>
 import pubsub from 'pubsub-js'
+
 export default {
   name: "MyItem",
   props: ['todo'],
@@ -21,24 +28,35 @@ export default {
   },
   methods: {
     handlerCheck(id) {
-      pubsub.publish('changeTodo',id)
+      pubsub.publish('changeTodo', id)
     },
-    updateTodo(todo){
+    updateTodo(todo) {
       console.log('修改todo')
       this.todo.isEdit = !this.todo.isEdit
+
+      // input 在隐藏状态下无法直接获取焦点
+      /*setTimeout(() => {
+        this.$refs.inputTitle.focus()
+      }, 200)*/
+
+      // 会在 dom 节点更新完成后执行
+      this.$nextTick(function (){
+        this.$refs.inputTitle.focus()
+      })
     },
     deleteTodo(id) {
-      if(confirm('确定删除嘛？')){
-        pubsub.publish('removeTodo',id)
+      if (confirm('确定删除嘛？')) {
+        pubsub.publish('removeTodo', id)
       }
     },
-    handleBluer(todo,e){
+    handleBluer(todo, e) {
       this.todo.isEdit = !this.todo.isEdit
-      if(!e.target.value.trim()) return alert('输入不能为空')
+      if (!e.target.value.trim()) return alert('输入不能为空')
       // 复制对象
-      const todoObj = Object.assign({},todo)
+      const todoObj = Object.assign({}, todo)
       todoObj.title = e.target.value
-      pubsub.publish('updateTodoTitle',todoObj)
+      pubsub.publish('updateTodoTitle', todoObj)
+
     }
   }
 };

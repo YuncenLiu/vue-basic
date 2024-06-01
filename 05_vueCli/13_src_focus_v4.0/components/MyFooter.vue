@@ -1,10 +1,10 @@
-<template lang="">
+<template>
   <div class="todo-footer" v-show="total">
     <label>
       <!-- <input type="checkbox" :checked="isAll" @change="checkAll"/> -->
       <input type="checkbox" v-model="isAll"/>
     </label>
-    <span>已完成 {{doneTotal}}</span> / 全部 {{todos.length}}
+    <span>已完成 {{ doneTotal }}</span> / 全部 {{ todos.length }}
     <button class="btn btn-danger" @click="clearLocalStorage">清空LocalStorage</button>
     <button class="btn btn-danger" @click="clearAll">清除已完成任务</button>
   </div>
@@ -15,12 +15,12 @@ export default {
   props: ['todos'],
   methods: {
     checkAll(e) {
-      this.$emit('checkAllTodo',e.target.checked)
+      this.$emit('checkAllTodo', e.target.checked)
     },
-    clearAll(){
+    clearAll() {
       this.$emit('removeAllTodo')
     },
-    clearLocalStorage(){
+    clearLocalStorage() {
       localStorage.clear()
     }
   },
@@ -33,12 +33,12 @@ export default {
         return pre + (current.done ? 1 : 0)
       }, 0)
     },
-    isAll:{
-      get(){
+    isAll: {
+      get() {
         return this.total === this.doneTotal && this.total > 0
       },
-      set(value){
-        this.$emit('checkAllTodo',value)
+      set(value) {
+        this.$emit('checkAllTodo', value)
       }
     }
   }
