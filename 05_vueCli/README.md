@@ -236,7 +236,7 @@ npm -i less-loader@7
 
 1. 一种组件问题通信方式，适用于任意组件间通信
 2. 安装全局事件总线
-   ```js
+   ```ecmascript 6
    new Vue({
       el:'#app',
       render: h => h(App),
@@ -247,7 +247,7 @@ npm -i less-loader@7
    ```
 3. 使用事件总线
    1. 接收数据，调用谁，写在谁组件中
-   ```js
+   ```ecmascript 6
    mounted(){
       this.$bus.$on('hello',(data)=>{
          console.log('我是 Edu 组件,收到了数据',data)
@@ -255,12 +255,12 @@ npm -i less-loader@7
    },
    ```
    2. 谁要调用，谁去拿总线
-   ```js
+   ```ecmascript 6
    this.$bus.$emit('hello',this.name)
    ```
    
 4. 最好在 beforeDestory 钩子中，用 $off 去解绑当`前组件所用到`的事件
-   ```js
+   ```ecmascript 6
    beforeDestroy(){
       this.$bus.$off('hello')
    }
@@ -278,21 +278,23 @@ npm -i less-loader@7
    1. 安装 pubsub: `npm i pubsub-js`
    2. 引入 `import pubsub from 'pubsub-js'`
    3. 接收数据：A 组件想接收数据，则在 A 组件中订阅消息，订阅的回调留在 A组件自身
-   ```js
+   ```ecmascript 6
    // 第一种方法 直接在 mounted 中回调
-   this.pubId = pubsub.subscribe('hello',(msgName,data) => {...})
-    
+   this.pubId = pubsub.subscribe('hello',(msgName,data) => {
+   
+   })
    // 第二种方法，通过methods方法转接一下，这样就可以获取到this
    methods:{
-      getName(msgName,data){...}
+      getName(msgName,data){
+      }
    },
    mounted(){
       pubsub.subscribe('hello',this.getName)
-   },
+   }
    ```
    4. 提供数据： `pubsub.publish('xxx',数据)`
    5. 最好在 beforeDesotry 钩子中，取消订阅
-   ```sh
+   ```ecmascript 6
    pubsub.unsubscribe(pid)
    ```
 
@@ -307,3 +309,17 @@ npm -i less-loader@7
 3. 当数据改变后，要基于更新后的新Dom 进行某些操作时，要在 `nextTick` 所指定的回调函数中执行
  
 例如，给创建的 input 框添加 `focus` 焦点功能，直接添加的生命周期不对，所以无法实现。
+
+## Vue封装的过度与动画
+
+1. 作用：在插入、更新或移除 Dom 元素时，在合适的时候元素添加样式类名
+2. 过程
+   1. Enter:
+      1. v-enter -> v-enter-to
+   2. Leave:
+      1. v-leave -> v-leave-to
+3. 写法：
+   1. 准备好样式，元素进入 `v-enter` 进入起点，`v-enter-active` 进入过程，`v-enter-to` 进入终点
+   2. 元素离开的样式，`v-leave` 离开起点，`v-leave-active` 离开过程中，`v-leave-to` 离开终点
+   3. 使用 <transition> 包裹要过度的元素，并配置name属性
+   4. 若有多个元素需要过度，则需要使用：`<transition-group>`，且每个元素都要指定 key 值
