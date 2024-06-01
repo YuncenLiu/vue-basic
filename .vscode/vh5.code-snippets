@@ -46,6 +46,13 @@
 		  "</html>"
 		],
 		"description": "Vue Base 工程"
+	  },
+	  "csl": {
+		"prefix": "csl",
+		"body": [
+		  "console.log($1)"
+		],
+		"description": "控制台输出"
 	  }
 	
 }

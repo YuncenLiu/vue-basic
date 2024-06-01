@@ -144,3 +144,42 @@ npm -i less-loader@7
 5. 解绑自定义事件: `this.$off('send')`
 6. 组件上也可以绑定原生 DOM 事件,需要使用 native 修饰符
 7. 注意: 通过 `this.$refs.xxx.$on('sendMsg',function(xxx)=>{})` 绑定自定义事件时,回调要么配置在 methods 中,要么用箭头函数,否则 this 会出现指向问题
+
+## 全局事件总线(GlobalEventBus)
+
+1. 一种组件问题通信方式，适用于任意组件间通信
+2. 安装全局事件总线
+   ```js
+   new Vue({
+      el:'#app',
+      render: h => h(App),
+      beforeCreate(){
+         Vue.prototype.$bus = this
+      }
+   })
+   ```
+3. 使用事件总线
+   1. 接收数据，调用谁，写在谁组件中
+   ```js
+   mounted(){
+      this.$bus.$on('hello',(data)=>{
+         console.log('我是 Edu 组件,收到了数据',data)
+      })
+   },
+   ```
+   2. 谁要调用，谁去拿总线
+   ```js
+   this.$bus.$emit('hello',this.name)
+   ```
+   
+4. 最好在 beforeDestory 钩子中，用 $off 去解绑当`前组件所用到`的事件
+   ```js
+   beforeDestroy(){
+      this.$bus.$off('hello')
+   }
+   ```
+
+
+问题1: 为什么要在全局事件总线上写解绑？
+
+不解绑他一直在事件总线上

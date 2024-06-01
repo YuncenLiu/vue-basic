@@ -10,7 +10,8 @@
 <script>
 export default {
   name: "MyItem",
-  props: ['todo', 'changeTodo','removeTodo'],
+  // props: ['todo', 'changeTodo','removeTodo'],
+  props: ['todo'],
   data() {
     return {
       done: true
@@ -19,11 +20,13 @@ export default {
   methods: {
     handlerCheck(id) {
       // 通知 APP 组件将对应todo done值取反
-      this.changeTodo(id)
+      // this.changeTodo(id)
+      this.$bus.$emit('changeTodo',id)
     },
     deleteTodo(id) {
       if(confirm('确定删除嘛？')){
-        this.removeTodo(id)
+        // this.removeTodo(id)
+        this.$bus.$emit('removeTodo',id)
       }
     }
   }

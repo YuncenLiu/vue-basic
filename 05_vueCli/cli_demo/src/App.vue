@@ -3,7 +3,8 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <MyHeader @addTodo="addTodo" />
-        <MyList :todos="todos" :changeTodo="changeTodo" :removeTodo="removeTodo" />
+        <!-- <MyList :todos="todos" :changeTodo="changeTodo" :removeTodo="removeTodo" /> -->
+        <MyList :todos="todos" />
         <MyFooter :todos="todos" @checkAllTodo="checkAllTodo" @removeAllTodo="removeAllTodo" />
       </div>
     </div>
@@ -25,16 +26,16 @@ export default {
       console.log('我收到了数据', x);
       this.todos.unshift(x)
     },
-    changeTodo(id) {
-      console.log('改变状态', id);
-      this.todos.forEach((todo) => {
-        if (todo.id === id) todo.done = !todo.done
-      })
-    },
-    removeTodo(id) {
-      console.log("删除这个todo", id);
-      this.todos = this.todos.filter(todo => todo.id !== id)
-    },
+    // changeTodo(id) {
+    //   console.log('改变状态', id);
+    //   this.todos.forEach((todo) => {
+    //     if (todo.id === id) todo.done = !todo.done
+    //   })
+    // },
+    // removeTodo(id) {
+    //   console.log("删除这个todo", id);
+    //   this.todos = this.todos.filter(todo => todo.id !== id)
+    // },
     checkAllTodo(done) {
       this.todos.forEach(todo => todo.done = done)
     },
@@ -54,12 +55,24 @@ export default {
       { id: '002', title: '喝酒🍺', done: false },
       { id: '003', title: '烫头💇', done: false },
     ]
-    localStorage.setItem('todos',JSON.stringify(todos))
+    localStorage.setItem('todos', JSON.stringify(todos))
+
+    this.$bus.$on('changeTodo', (id) => {
+      console.log('改变状态', id);
+      this.todos.forEach((todo) => {
+        if (todo.id === id) todo.done = !todo.done
+      })
+    })
+
+    this.$bus.$on('removeTodo', (id) => {
+      console.log("删除这个todo", id);
+      this.todos = this.todos.filter(todo => todo.id !== id)
+    })
   },
   watch: {
-    todos:{
+    todos: {
       deep: true,
-      handler(value){
+      handler(value) {
         localStorage.setItem('todos', JSON.stringify(value))
       }
     }
