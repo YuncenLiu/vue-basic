@@ -124,3 +124,23 @@ npm -i less-loader@7
    2. 子组建 -> 父组件通信（要求父组件先给子一个函数）
 3. 使用 v-model 时要切记，v-model 绑定的指不能是 props 传过来的指，因为 props 是不可以修改的
 4. props 传过来的若是对象类型的值，修改对象中的属性时Vue不会报错，但不推荐这样使用
+
+## 组件的自定义事件 子往父组件传递
+
+1. 一种组件通信方式,适用于 子组件 ===> 父组件
+2. 使用场景: 子想给父组件传数据,就要在父组件设置回调函数
+3. 绑定自定义事件
+   1. 在父组件中 `<Demo @sendMsg="send"/>` 或者 `<Demo v-on:sendMsg="send"/>`
+   2. 在父组件中
+   ```
+   <Demo ref="send"/>
+   ...
+   mounted(){
+      this.$refs.send.$on('sendMsg',this.send)
+   }
+   ```
+   3. 若想要自定义事件只触发一次,可以使用 once 修饰符,或者在方法将 $on 替换为 $once
+4. 触发自定义事件: `this.$emit('send',...params)`
+5. 解绑自定义事件: `this.$off('send')`
+6. 组件上也可以绑定原生 DOM 事件,需要使用 native 修饰符
+7. 注意: 通过 `this.$refs.xxx.$on('sendMsg',function(xxx)=>{})` 绑定自定义事件时,回调要么配置在 methods 中,要么用箭头函数,否则 this 会出现指向问题

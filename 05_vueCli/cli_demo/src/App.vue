@@ -1,111 +1,63 @@
 <template>
-  <div>
-    <div class="todo-container">
-      <div class="todo-wrap">
-        <MyHeader :addTodo="addTodo" />
-        <MyList :todos="todos" :changeTodo="changeTodo" :removeTodo="removeTodo" />
-        <MyFooter :todos="todos" :checkAllTodo="checkAllTodo" :removeTodo="removeTodo" />
-      </div>
-    </div>
+  <div class="app">
+    <h2>{{ msg }}</h2>
+    <School :getSchoolName="getSchoolName" />
+    <hr />
+    <!-- 通过 v-on 实现子父传递 -->
+    <!-- <Edu @getName.once="getName" /> -->
+
+    <!-- 通过 mounted ref 实现子父传递，灵活性更高，可以等页面延时后再绑定子父通信事件  -->
+    <Edu ref="getName" @click.native="show"/>
   </div>
 </template>
 <script>
-import MyHeader from "./components/MyHeader.vue";
-import MyList from "./components/MyList.vue";
-import MyFooter from "./components/MyFooter.vue";
+import School from "./components/School.vue";
+import Edu from "./components/Edu.vue";
 export default {
   name: "App",
+  components: {
+    School,
+    Edu,
+  },
   data() {
     return {
-      todos: JSON.parse(localStorage.getItem('todos')) || []
-    }
+      msg: "吃饭🍚",
+    };
   },
   methods: {
-    addTodo(x) {
-      console.log('我收到了数据', x);
-      this.todos.unshift(x)
+    getSchoolName(name) {
+      // this.msg = this.msg + name
+      console.log('App getSchoolName', name);
     },
-    changeTodo(id) {
-      console.log('改变状态', id);
-      this.todos.forEach((todo) => {
-        if (todo.id === id) todo.done = !todo.done
-      })
+    getName(name, ...parms) {
+      // this.msg = this.msg + name
+      console.log('App getName', name, parms);
     },
-    removeTodo(id) {
-      console.log("删除这个todo", id);
-      this.todos = this.todos.filter(todo => todo.id !== id)
-    },
-    checkAllTodo(done) {
-      this.todos.forEach(todo => todo.done = done)
-    },
-    removeTodo() {
-      this.todos = this.todos.filter(todo => !todo.done)
+    show(){
+      alert('studet 组件触发 show')
     }
-  },
-  components: {
-    MyHeader,
-    MyList,
-    MyFooter,
   },
   mounted() {
-    console.log('往 localStorage 添加一份 Todos');
-    const todos = [
-      { id: '001', title: '抽烟🚬', done: true },
-      { id: '002', title: '喝酒🍺', done: false },
-      { id: '003', title: '烫头💇', done: false },
-    ]
-    localStorage.setItem('todos',JSON.stringify(todos))
-  },
-  watch: {
-    todos:{
-      deep: true,
-      handler(value){
-        localStorage.setItem('todos', JSON.stringify(value))
-      }
-    }
+    // 给子组件身上放一个回调函数
+    // this.$refs.getName.$on('getName',this.getName)
+
+    // 只触发一次
+    // this.$refs.getName.$once('getName',this.getName)
+
+    this.$refs.getName.$on('getName', function (name, ...params) {
+      console.log('App getName', name, params);
+      console.log('this',this.$el);
+    })
+
+    // this.$refs.getName.$on('getName', (name, ...params)=> {
+    //   console.log('App getName', name, params);
+    //   console.log('this',this.$el);
+    // })
   }
 };
 </script>
-<style lang="less">
-body {
-  background: #fff;
-}
-
-.btn {
-  display: inline-block;
-  padding: 4px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  // box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
-  //   0 1px 2px rgba(0, 0, 0, 0.05);
-  background-color: #da4e49d1;
-  border: 1px solid #bd362fca;
-  border-radius: 4px;
-}
-
-.btn-danger:hover {
-  background-color: #da4f49;
-  border: 1px solid #bd362f;
-}
-
-.btn:focus {
-  outline: none;
-}
-
-.todo-container {
-  width: 600px;
-  margin: 0 auto;
-  margin-top: 40px;
-  border: 1px solid #ddd;
-}
-
-.todo-container .todo-wrap {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border: 5px;
+<style lang="less" scoped>
+.app {
+  background: #ddd;
 }
 </style>
