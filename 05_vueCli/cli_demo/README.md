@@ -183,3 +183,32 @@ npm -i less-loader@7
 问题1: 为什么要在全局事件总线上写解绑？
 
 不解绑他一直在事件总线上
+
+## 消息订阅与发布（pubsub）
+
+1. 一种组件间通信方式，适用于任意组件间通信
+2. 使用步骤
+   1. 安装 pubsub: `npm i pubsub-js`
+   2. 引入 `import pubsub from 'pubsub-js'`
+   3. 接收数据：A 组件想接收数据，则在 A 组件中订阅消息，订阅的回调留在 A组件自身
+   ```js
+   // 第一种方法 直接在 mounted 中回调
+   this.pubId = pubsub.subscribe('hello',(msgName,data) => {...})
+    
+   // 第二种方法，通过methods方法转接一下，这样就可以获取到this
+   methods:{
+      getName(msgName,data){...}
+   },
+   mounted(){
+      pubsub.subscribe('hello',this.getName)
+   },
+   ```
+   4. 提供数据： `pubsub.publish('xxx',数据)`
+   5. 最好在 beforeDesotry 钩子中，取消订阅
+   ```sh
+   pubsub.unsubscribe(pid)
+   ```
+
+这里发现了一个坑，pubsub-js 只能传递一个值。
+
+通过 `const todoObj = Object.assign({},todo)` 即可将对象复制成新的对象，保证不影响原本的数据。

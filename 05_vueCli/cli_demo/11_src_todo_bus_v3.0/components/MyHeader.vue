@@ -11,6 +11,13 @@
 import { nanoid } from "nanoid";
 export default {
   name: "MyHeader",
+
+  // 适合多表单采用 data 方式，可以一并处理
+  // data(){
+  //   return{
+  //     title:''
+  //   }
+  // },
   methods: {
     add(e) {
       if(e.target.value.trim().length < 1){

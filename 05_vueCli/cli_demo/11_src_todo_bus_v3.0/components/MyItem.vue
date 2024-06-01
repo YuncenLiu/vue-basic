@@ -2,44 +2,37 @@
   <li>
     <label>
       <input type="checkBox" :checked="todo.done" @click="handlerCheck(todo.id)"/>
-      <span v-show="!todo.isEdit">{{todo.title}}</span>
-      <input type="text" v-show="todo.isEdit" :value="todo.title" @blur="handleBluer(todo,$event)"/>
+      <span>{{todo.title}}</span>
     </label>
     <button class="btn btn-danger" @click="deleteTodo(todo.id)">删除</button>
-    <button class="btn btn-edit"  v-show="!todo.isEdit" @click="updateTodo(todo)">编辑</button>
   </li>
 </template>
 <script>
-import pubsub from 'pubsub-js'
 export default {
   name: "MyItem",
+  // props: ['todo', 'changeTodo','removeTodo'],
   props: ['todo'],
   data() {
     return {
-      done: true,
+      done: true
     }
   },
   methods: {
     handlerCheck(id) {
-      pubsub.publish('changeTodo',id)
-    },
-    updateTodo(todo){
-      console.log('修改todo')
-      this.todo.isEdit = !this.todo.isEdit
+      // 通知 APP 组件将对应todo done值取反
+      // this.changeTodo(id)
+      this.$bus.$emit('changeTodo',id)
     },
     deleteTodo(id) {
       if(confirm('确定删除嘛？')){
-        pubsub.publish('removeTodo',id)
+        // this.removeTodo(id)
+        this.$bus.$emit('removeTodo',id)
       }
     },
-    handleBluer(todo,e){
-      this.todo.isEdit = !this.todo.isEdit
-      if(!e.target.value.trim()) return alert('输入不能为空')
-      // 复制对象
-      const todoObj = Object.assign({},todo)
-      todoObj.title = e.target.value
-      pubsub.publish('updateTodoTitle',todoObj)
-    }
+    beforeDestroy() {
+      this.$bus.$off('changeTodo')
+      this.$bus.$off('removeTodo')
+    },
   }
 };
 </script>
