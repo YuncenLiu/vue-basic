@@ -1,29 +1,33 @@
 <template>
   <div class="row">
-    <div class="card" v-for="user in users" :key="user.id">
+    <div class="card" v-for="user in info.users" :key="user.id">
       <a :href="user.html_url" target="_blank">
         <img :src="user.avatar_url" style="width: 100px"/>
       </a>
-      <p class="card-text">{{user.login}}</p>
+      <p class="card-text">{{ user.login }}</p>
     </div>
+    <h1 v-show="info.isFirst">欢迎使用!</h1>
+    <h1 v-show="info.isLoading">加载中....</h1>
+    <h1 v-show="info.errMsg">{{ info.errMsg }}</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: "ListComponent",
-  data(){
-    return{
-      users:[],
-      isFirst: true,
-      isLoading: false,
-      errMsg: ''
+  data() {
+    return {
+      info: {
+        isFirst: true,
+        isLoading: false,
+        errMsg: '',
+        users: []
+      }
     }
   },
   mounted() {
-    this.$bus.$on('getUsers',(users)=>{
-      console.log('我是 list 组件,收到了数据',users)
-      this.users = users
+    this.$bus.$on('updateListData', (dataObj) => {
+      this.info = {...this.info,...dataObj}
     })
   }
 }
