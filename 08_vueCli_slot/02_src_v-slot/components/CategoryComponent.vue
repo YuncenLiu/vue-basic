@@ -1,22 +1,16 @@
 <template>
   <div class="category">
     <h3>{{ title }}</h3>
-    <slot :games="games" :msg="msg">
-      默认内容
-    </slot>
+    <!-- 定义插槽，等组件使用者进行填充,如果不填充按默认展示slot标签内容 -->
+    <slot name="center"></slot>
+    <slot name="footer"></slot>
   </div>
 </template>
 
 <script>
 export default {
   name: "CategoryComponent.vue",
-  props: ['title'],
-  data() {
-    return {
-      games: ['红色警戒', '穿越火线', '劲舞团', '超级玛丽'],
-      msg: 'hello'
-    }
-  }
+  props: ['title']
 }
 </script>
 
