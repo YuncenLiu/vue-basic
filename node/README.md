@@ -10,23 +10,37 @@ npm install express
 npm i
 ```
 
-启动 localhost:5000/students 服务
+#### 启动某一个后端服务
+
+1. node 直接运行
 ```shell
-node src/students.js
-# 或者
-npm run students
+node src/xxx.js
+
+# 例如运行 src 目录下 studnet.js
+
+node src/student.js
 ```
 
-启动 localhost:5001/cars 服务
+
+2. npm 运行
+
+查看 package.json 文件，根据配置自定义启动
+
 ```shell
-node src/cars.js
-# 或者
-npm run cars
+npm run studentsNode
 ```
 
-随后浏览器访问验证
+3. 控制台会打印如下内容
 
+```
+/usr/local/bin/npm run treeGraphNode
 
-[http://localhost:5000/students](http://localhost:5000/students)
+> student@1.0.0 treeGraphNode
+> node src/treeGraph.js
 
-[http://localhost:5001/cars](http://localhost:5001/cars)
+Server is running on port 5003 and url is http://localhost:5003/node
+Server is running on port 5003 and url is http://localhost:5003/link
+```
+
+访问地址即可 [http://localhost:5003/node](http://localhost:5003/node)
+
