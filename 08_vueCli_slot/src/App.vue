@@ -1,25 +1,26 @@
 <template>
   <div class="container">
-    <Category title="美食" :listData="foods">
-      <img src="https://i0.hdslb.com/bfs/archive/1ee8790f3491c4402b59fc67e9ea1018d55a994e.jpg" alt="">
-    </Category>
-    <Category title="游戏" :listData="games">
-      <ul>
+    <CategoryComponent title="美食" :listData="foods">
+      <img slot="center" src="https://i0.hdslb.com/bfs/archive/1ee8790f3491c4402b59fc67e9ea1018d55a994e.jpg" alt="">
+      <a slot="footer" href="http://liuyuncen.com"></a>
+    </CategoryComponent>
+    <CategoryComponent title="游戏" :listData="games">
+      <ul solt="center">
         <li v-for="(item,index) in games" :key="index">{{item}}</li>
       </ul>
-    </Category>
-    <Category title="电影" :listData="films">
+    </CategoryComponent>
+    <CategoryComponent title="电影" :listData="films">
       <video controls src="https://media.w3.org/2010/05/sintel/trailer.mp4"></video>
-    </Category>
+    </CategoryComponent>
   </div>
 </template>
 
 <script>
-import Category from "@/components/Category";
+import CategoryComponent from "@/components/CategoryComponent";
 export default {
   name: 'App',
   components:{
-    Category
+    CategoryComponent
   },
   data(){
     return{

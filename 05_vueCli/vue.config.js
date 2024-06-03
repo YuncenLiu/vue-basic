@@ -18,7 +18,7 @@ module.exports = defineConfig({
     devServer: {
         proxy: {
             '/stu': {
-                target: 'http://localhost:5000',
+                target: 'http://localhost:5002',
                 pathRewrite: {'^/stu':''},
                 // 用于支持 websocket
                 ws: true,
