@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>当前求和为： {{sum}}</h1>
+    <h1>当前求和为： </h1>
     <select v-model.number="n" name="count" id="count">
       <option :value="1">1</option>
       <option :value="2">2</option>
@@ -20,26 +20,26 @@ export default {
   data(){
     return{
       // 当前数据总和
-      sum: 0,
       // 用户选择数据
       n: 1
     }
   },
   methods:{
     increment(){
-      this.sum += this.n
+      // this.sum += this.n
+      this.$store.dispatch('increment',this.n)
     },
     decrement(){
-      this.sum -= this.n
+      // this.sum -= this.n
     },
     incrementOdd(){
-      if (this.sum % 2){
-        this.sum += this.n
-      }
+      // if (this.sum % 2){
+        // this.sum += this.n
+      // }
     },
     incrementWait(){
        setTimeout(()=>{
-          this.sum += this.n
+          // this.sum += this.n
        },500)
     }
   }
