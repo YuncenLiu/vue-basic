@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
-const PORT = 5000;
+const PORT = 5002;
+const path = '/students'
 
 // 记录访问路径的中间件
 app.use((req, res, next) => {
@@ -10,7 +11,7 @@ app.use((req, res, next) => {
 });
 
 // 定义路由
-app.get('/students', (req, res) => {
+app.get(path, (req, res) => {
     // 返回 JSON 对象
     res.json([
         {'id':"001",'name':'tom','age':21},
@@ -23,5 +24,5 @@ app.get('/students', (req, res) => {
 
 // 监听端口
 app.listen(PORT, () => {
-    console.log(`Students Server is running on port ${PORT} and url is http://localhost:5000/students`);
+    console.log(`Server is running on port ${PORT} and url is http://localhost:${PORT}${path}`);
 });
