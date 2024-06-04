@@ -180,3 +180,42 @@ export default {
     }
 }
 ```
+
+
+### 模块化命名空间(简写和四大方法)
+
+让代码更好维护,数据分类更明确
+
+开启命名空间
+```js
+namespace: true
+```
+
+开启命名空间后,读取 state 数据
+```js
+this.$store.state.countOptions.sum
+
+...mapState('countOptions',['sum','school'])
+```
+
+去读 getter 数据
+```js
+this.$store.getters['countOptions/bigSum']
+
+...mapGetters('countOptions',['bigSum'])
+```
+
+调用 dispatch
+```js
+this.$store.dispatch('personOptions/addPersonServer',person)
+
+...mapActions('countOptions',['increment'])
+```
+
+调用 commit
+```js
+this.$store.commit('personOptions/addPersonServer',person)
+
+...mapMutations('personOptions',['AddPerson']),
+```
+
