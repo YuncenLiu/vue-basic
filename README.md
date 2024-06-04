@@ -41,3 +41,22 @@
     + [组件的自定义事件-子往父组件传递](https://github.com/YuncenLiu/vue-basic/blob/master/05_vueCli/README.md#组件的自定义事件-子往父组件传递)
     + [全局事件总线(GlobalEventBus)](https://github.com/YuncenLiu/vue-basic/blob/master/05_vueCli/README.md#全局事件总线(GlobalEventBus))
     + [消息订阅与发布-pubsub](https://github.com/YuncenLiu/vue-basic/blob/master/05_vueCli/README.md#消息订阅与发布-pubsub)
+    + [nextTick](https://github.com/YuncenLiu/vue-basic/tree/master/05_vueCli#nexttick)
+    + [Vue封装的过度与动画](https://github.com/YuncenLiu/vue-basic/tree/master/05_vueCli#nexttick)
+    + [解决跨域问题](https://github.com/YuncenLiu/vue-basic/tree/master/05_vueCli#解决跨域问题)
+    + [VueCli配置代理](https://github.com/YuncenLiu/vue-basic/tree/master/05_vueCli#VueCli配置代理)
+      + [方式一:直接代理](https://github.com/YuncenLiu/vue-basic/tree/master/05_vueCli#方式一)
+      + [方式二:匹配前缀](https://github.com/YuncenLiu/vue-basic/tree/master/05_vueCli#方式二)
+  + [WebStorage](https://github.com/YuncenLiu/vue-basic/blob/master/06_storage/doc/README.md#webstorage)
+  + [GitHub Search 案例](https://github.com/YuncenLiu/vue-basic/blob/master/07_vueCli_search/README.md#github-search-案例)
+  + [插槽](https://github.com/YuncenLiu/vue-basic/blob/master/08_vueCli_slot/README.md#插槽)
+  + [vuex](https://github.com/YuncenLiu/vue-basic/blob/master/09_vuecli_vuex/README.md#vuex)
+    + [什么时候使用？](https://github.com/YuncenLiu/vue-basic/blob/master/09_vuecli_vuex/README.md#%什么时候使用)
+    + [搭建vuex环境](https://github.com/YuncenLiu/vue-basic/blob/master/09_vuecli_vuex/README.md#搭建vuex环境)
+    + [基本使用](https://github.com/YuncenLiu/vue-basic/blob/master/09_vuecli_vuex/README.md#基本使用)
+    + [getters的使用](https://github.com/YuncenLiu/vue-basic/blob/master/09_vuecli_vuex/README.md#getters的使用)
+    + [四个map方法使用](https://github.com/YuncenLiu/vue-basic/blob/master/09_vuecli_vuex/README.md#四个map方法使用)
+
+
+    
+# [Node 使用方法](https://github.com/YuncenLiu/vue-basic/blob/master/node/README.md#node-启动方式)
