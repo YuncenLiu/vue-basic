@@ -47,19 +47,13 @@ const mutations = {
         setTimeout(() => {
             state.sum += value
         }, 500)
-    },
-    AddPerson(state, value){
-        state.PersonList.unshift(value)
     }
 }
 // 准备 state 用于存储数据
 const state = {
     sum: 0,
     school: '北京大学',
-    subject: '计算机',
-    PersonList:[
-        {id:'001',name:'张三🐒'}
-    ]
+    subject: '计算机'
 }
 
 const getters = {
