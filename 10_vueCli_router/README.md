@@ -130,3 +130,98 @@ export default new VueRouter({
 </router-link>
 ```
 2. 接受参数: `this.$route.query`
+
+
+### 路由命名
+作用: 简化路由跳转
+1. 给路由命名，添加 name 属性
+```js
+export default new VueRouter({
+    routes: [
+        {
+            name: 'about',
+            path: '/about',
+            component: About
+        }]})
+```
+
+2. 简化跳转
+```html
+<router-link 
+        :to="{name: 'homeMessageDetail'....}">
+</router-link>
+```
+
+### 路由的parms参数
+声明配置，在router 的 index.js 中配置
+```js
+{
+    name: 'homeMessageDetail',
+    path: 'detail/:id/:title',
+    component: Detail
+}
+```
+
+参数传递
+```html
+<router-link :to="`/home/message/detail/${m.id}/${m.title}`">{{m.title}}</router-link>
+```
+
+接收参数
+```html
+<li>消息编码：{{ $route.params.id }}</li>
+```
+
+注意，路由携带 params 参数，若使用 to 的对象写法，则不能使用 path 配置项，必须使用 name配置
+```html
+<router-link :to="{
+ // path: '/home/message/detail/123/123', // 单独这样也行，就是没办法传参了
+ name: 'homeMessageDetail',
+ // 需要注意的是，如果使用 params 参数，不允许使用 path，只能使用 name路由
+ params: {
+   id: m.id,
+   title: m.title
+ }
+}">
+ {{m.title}}
+</router-link>
+```
+
+### 路由props配置
+
+作用：让路由组件更方便的收到参数
+
+```js
+{
+    name: 'homeMessageDetail',
+    path: 'detail/:id/:title',
+    component: Detail,
+    // 1、值为键值对，通过 props 传递给组件
+    // props:{a:1,b:'hello'}
+
+    // 2、值若为 ture，会把路由的 params 参数都会以 props 传递给组件
+    // 但是不理 query 参数
+    // props: true
+
+    // 3、函数写法
+    // props($router) {
+    //     return {id: $router.query.id, title: $router.query.title}
+    // }
+    // 连续结构赋值
+    props({query: {id, title}}) {
+        return {id, title}
+    }
+}
+```
+
+### routerLink的replace属性
+
+作用：控制路由跳转操作浏览器历史记录的模式
+
+浏览器的历史记录有两种方式，分别是 push 和 replace，push 是历史追加，replace 是替换当前记录，路由跳转时候默认使用 push
+
+开启 replace 
+
+```html
+<router-link replace ....>Home</router-link>
+```

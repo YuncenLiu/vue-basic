@@ -13,16 +13,16 @@
         <router-link :to="{
           // path: '/home/message/detail/123/123',
           name: 'homeMessageDetail',
-          query: {
-            id: m.id,
-            title: m.title
-          },
-
-          // 需要注意的是，如果使用 params 参数，不允许使用 path，只能使用 name路由
-          // params: {
+          // query: {
           //   id: m.id,
           //   title: m.title
-          // }
+          // },
+
+          // 需要注意的是，如果使用 params 参数，不允许使用 path，只能使用 name路由
+          params: {
+            id: m.id,
+            title: m.title
+          }
         }">
           {{m.title}}
         </router-link>
