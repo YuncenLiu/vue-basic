@@ -225,3 +225,110 @@ export default new VueRouter({
 ```html
 <router-link replace ....>Home</router-link>
 ```
+
+### 编程式导航
+1. 不借助 router-link 实现路由跳转。通过 $router 灵活跳转
+
+```js
+this.$router.push({
+  name: 'homeMessageDetail',
+  query:{
+    id: m.id,
+    title: m.title
+  }
+})
+
+
+this.$router.replace({
+  name: 'homeMessageDetail',
+  query:{
+    id: m.id,
+    title: m.title
+  }
+})
+}
+```
+
+注意 push 和 replace 区别。
+
+
+### 缓存路由组件
+
+```html
+
+让不展示的路由组件保持挂载，不被销毁
+
+<!-- include 这里是组件名： export 下面的 name -->
+<keep-alive include="HomeNews">
+  <router-view/>
+</keep-alive>
+```
+
+多个的写法
+
+```html
+<keep-alive :include="['HomeNews','HomeMessage']">
+  <router-view/>
+</keep-alive>
+```
+
+### 路由守卫
+
+1. 对路由权限控制
+
+#### 全局守卫
+
+```js
+// 全局前置路由守卫，每次路由切换之前被调用
+router.beforeEach((to,from, next) => {
+    if (to.meta.isAuth){
+        if(localStorage.getItem('darkyState')==='f' ){
+            next()
+        }else{
+            alert('浏览器本地内存中 darkyState 值不是 f')
+        }
+    }else{
+        next()
+    }
+})
+
+// 后置路由守卫
+router.afterEach((to,from) =>{
+    document.title = to.meta.title || 'Hello Vue'
+})
+```
+
+
+#### 组件内路由
+
+写在 template 里面
+
+```js
+beforeRouteEnter(to, from, next) {
+ console.log('about beforeRouteEnter')
+ next()
+},
+beforeRouteLeave(to, from, next) {
+ console.log('about beforeRouteLeave')
+ next()
+
+}
+```
+
+### 路由器工作模式
+
+hash 值不会包含在 http 请求中
+
+## Hash模式
+
+1. 地址中永远带着`#`号，不美观
+2. 若以后地址通过第三方分享，app校验严格，则会被标记不合法
+3. 兼容性比较好
+
+## history模型
+
+1. 地址干净、美观
+2. 兼容性和hash相比略差
+3. 应用部署后需要找后端人员解决，例如 `npm i connect-history-api-fallback`，一刷新浏览器丢失页面问题。
+
+
