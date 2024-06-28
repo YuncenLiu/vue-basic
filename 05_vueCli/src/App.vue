@@ -1,37 +1,63 @@
 <template>
-  <div>
-    <button @click="getStudents">获取学生信息</button>
-    <br><br>
-    <button @click="getCars">获取汽车信息</button>
+  <div class="app">
+    <h2>{{ msg }}</h2>
+    <School :getSchoolName="getSchoolName" />
+    <hr />
+    <!-- 通过 v-on 实现子父传递 -->
+    <!-- <Edu @getName.once="getName" /> -->
+
+    <!-- 通过 mounted ref 实现子父传递，灵活性更高，可以等页面延时后再绑定子父通信事件  -->
+    <Edu ref="getName" @click.native="show"/>
   </div>
 </template>
 <script>
-import axios from 'axios'
+import School from "./components/School.vue";
+import Edu from "./components/Edu.vue";
 export default {
   name: "App",
-  methods:{
-    getStudents(){
-      axios.get('http://localhost:8080/stu/students').then(
-          response =>{
-            console.log('请求成功了',response.data)
-          },
-          error => {
-            console.log('请求失败了',error.message)
-          }
-      )
+  components: {
+    School,
+    Edu,
+  },
+  data() {
+    return {
+      msg: "吃饭🍚",
+    };
+  },
+  methods: {
+    getSchoolName(name) {
+      // this.msg = this.msg + name
+      console.log('App getSchoolName', name);
     },
-    getCars(){
-      axios.get('http://localhost:8080/car/cars').then(
-          response =>{
-            console.log('请求成功了',response.data)
-          },
-          error => {
-            console.log('请求失败了',error.message)
-          }
-      )
+    getName(name, ...parms) {
+      // this.msg = this.msg + name
+      console.log('App getName', name, parms);
+    },
+    show(){
+      alert('studet 组件触发 show')
     }
+  },
+  mounted() {
+    // 给子组件身上放一个回调函数
+    // this.$refs.getName.$on('getName',this.getName)
+
+    // 只触发一次
+    // this.$refs.getName.$once('getName',this.getName)
+
+    this.$refs.getName.$on('getName', function (name, ...params) {
+      console.log('App getName', name, params);
+      console.log('this',this.$el);
+    })
+
+    // this.$refs.getName.$on('getName', (name, ...params)=> {
+    //   console.log('App getName', name, params);
+    //   console.log('this',this.$el);
+    // })
   }
 };
 </script>
-<style>
+<style lang="less" scoped>
+.app {
+  background: #ddd;
+}
 </style>
