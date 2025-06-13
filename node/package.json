@@ -4,6 +4,7 @@
   "description": "A simple Node.js backend server",
   "scripts": {
     "studentsNode": "node src/students.js",
+    "ApiScreen": "node src/ApiScreen.js",
     "carsNode": "node src/cars.js",
     "treeGraphNode": "node src/treeGraph.js"
   },
